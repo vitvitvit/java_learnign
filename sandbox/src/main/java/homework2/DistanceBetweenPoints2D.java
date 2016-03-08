@@ -7,7 +7,7 @@ public class DistanceBetweenPoints2D {
 
   public static void main(String[] args) {
 
-    Point p = new Point(1, 2, 4, 8);
+    Point p = new Point(2, 2, 5, 6);
 
     System.out.println("Координаты точки A = (" + p.a1 + ";" + p.b1 + ")");
     System.out.println("Координаты точки B = (" + p.a2 + ";" + p.b2 + ")");
