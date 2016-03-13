@@ -29,6 +29,48 @@ public class TestBase {
     login("admin", "secret");
   }
 
+  protected void gotoHomePage() {
+    wd.findElement(By.linkText("home page")).click();
+  }
+
+  protected void submitContactCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  protected void fillContactData(ContactData contactData) {
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getUserFirstName());
+    wd.findElement(By.name("middlename")).click();
+    wd.findElement(By.name("middlename")).clear();
+    wd.findElement(By.name("middlename")).sendKeys(contactData.getUserMiddleName());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getUserLastName());
+    wd.findElement(By.name("nickname")).click();
+    wd.findElement(By.name("nickname")).clear();
+    wd.findElement(By.name("nickname")).sendKeys(contactData.getUserNick());
+    wd.findElement(By.name("company")).click();
+    wd.findElement(By.name("company")).clear();
+    wd.findElement(By.name("company")).sendKeys(contactData.getUserCompany());
+    wd.findElement(By.name("address")).click();
+    wd.findElement(By.name("address")).clear();
+    wd.findElement(By.name("address")).sendKeys(contactData.getUserAddress());
+    wd.findElement(By.name("home")).click();
+    wd.findElement(By.name("home")).clear();
+    wd.findElement(By.name("home")).sendKeys(contactData.getUserHomePhone());
+    wd.findElement(By.name("mobile")).click();
+    wd.findElement(By.name("mobile")).clear();
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getUserMobilePhone());
+    wd.findElement(By.name("work")).click();
+    wd.findElement(By.name("work")).clear();
+    wd.findElement(By.name("work")).sendKeys(contactData.getUserWorkPhone());
+  }
+
+  protected void openAddNewPage() {
+    wd.findElement(By.linkText("ADD_NEW")).click();
+  }
+
   private void login(String username, String password) {
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
