@@ -50,4 +50,22 @@ public class ContactHelper extends HelperBase {
   public void confirmDeletion() {
     wd.switchTo().alert().accept();
   }
+
+  public void createContact(ContactData contact) {
+    openAddNewPage();
+    fillContactData(contact);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home page"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
