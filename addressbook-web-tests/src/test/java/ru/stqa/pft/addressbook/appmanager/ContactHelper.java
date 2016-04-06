@@ -31,12 +31,13 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("ADD_NEW"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void clickEditContact() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void clickEditContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index);
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (index + 2) + "]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
