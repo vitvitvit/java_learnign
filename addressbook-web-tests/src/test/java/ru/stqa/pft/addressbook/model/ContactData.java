@@ -1,42 +1,16 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private int id;
-  private final String userFirstName;
-  private final String userMiddleName;
-  private final String userLastName;
-  private final String userNick;
-  private final String userCompany;
-  private final String userAddress;
-  private final String userHomePhone;
-  private final String userMobilePhone;
-  private final String userWorkPhone;
-
-  public ContactData(int id, String userFirstName, String userMiddleName, String userLastName, String userNick, String userCompany, String userAddress, String userHomePhone, String userMobilePhone, String userWorkPhone) {
-    this.id = id;
-    this.userFirstName = userFirstName;
-    this.userMiddleName = userMiddleName;
-    this.userLastName = userLastName;
-    this.userNick = userNick;
-    this.userCompany = userCompany;
-    this.userAddress = userAddress;
-    this.userHomePhone = userHomePhone;
-    this.userMobilePhone = userMobilePhone;
-    this.userWorkPhone = userWorkPhone;
-  }
-
-  public ContactData(String userFirstName, String userMiddleName, String userLastName, String userNick, String userCompany, String userAddress, String userHomePhone, String userMobilePhone, String userWorkPhone) {
-    this.id = Integer.MAX_VALUE;
-    this.userFirstName = userFirstName;
-    this.userMiddleName = userMiddleName;
-    this.userLastName = userLastName;
-    this.userNick = userNick;
-    this.userCompany = userCompany;
-    this.userAddress = userAddress;
-    this.userHomePhone = userHomePhone;
-    this.userMobilePhone = userMobilePhone;
-    this.userWorkPhone = userWorkPhone;
-  }
+  private int id = Integer.MAX_VALUE;
+  private String userFirstName;
+  private String userMiddleName;
+  private String userLastName;
+  private String userNick;
+  private String userCompany;
+  private String userAddress;
+  private String userHomePhone;
+  private String userMobilePhone;
+  private String userWorkPhone;
 
   public String getUserFirstName() {
     return userFirstName;
@@ -104,6 +78,56 @@ public class ContactData {
             ", userFirstName='" + userFirstName + '\'' +
             ", userLastName='" + userLastName + '\'' +
             '}';
+  }
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withUserFirstName(String userFirstName) {
+    this.userFirstName = userFirstName;
+    return this;
+  }
+
+  public ContactData withUserMiddleName(String userMiddleName) {
+    this.userMiddleName = userMiddleName;
+    return this;
+  }
+
+  public ContactData withUserLastName(String userLastName) {
+    this.userLastName = userLastName;
+    return this;
+  }
+
+  public ContactData withUserNick(String userNick) {
+    this.userNick = userNick;
+    return this;
+  }
+
+  public ContactData withUserCompany(String userCompany) {
+    this.userCompany = userCompany;
+    return this;
+  }
+
+  public ContactData withUserAddress(String userAddress) {
+    this.userAddress = userAddress;
+    return this;
+  }
+
+  public ContactData withUserHomePhone(String userHomePhone) {
+    this.userHomePhone = userHomePhone;
+    return this;
+  }
+
+  public ContactData withUserMobilePhone(String userMobilePhone) {
+    this.userMobilePhone = userMobilePhone;
+    return this;
+  }
+
+  public ContactData withUserWorkPhone(String userWorkPhone) {
+    this.userWorkPhone = userWorkPhone;
+    return this;
   }
 }
 
