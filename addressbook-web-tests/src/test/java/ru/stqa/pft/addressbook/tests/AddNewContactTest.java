@@ -16,8 +16,8 @@ public class AddNewContactTest extends TestBase{
             .withUserLastName("lastname").withUserNick("nickname").withUserCompany("company")
             .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone");
     app.contact().create(contact);
+    assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
