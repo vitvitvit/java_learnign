@@ -130,4 +130,41 @@ public class ContactHelper extends HelperBase {
             .withUserEmail(userEmail).withUserEmail2(userEmail2).withUserEmail3(userEmail3).withUserAddress(userAddress);
   }
 
+  public ContactData infoFromEditFormModified(ContactData contact) {
+    clickEditContactById(contact.getId());
+    String userFirstName = wd.findElement(By.name("firstname")).getAttribute("value");
+    String userLastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String userHomePhone = "H: " + wd.findElement(By.name("home")).getAttribute("value");
+    String userMobilePhone = "M: " + wd.findElement(By.name("mobile")).getAttribute("value");
+    String userWorkPhone = "W: " + wd.findElement(By.name("work")).getAttribute("value") + "\n";
+    String userEmail = wd.findElement(By.name("email")).getAttribute("value");
+    String userEmail2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String userEmail3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String userAddress = wd.findElement(By.name("address")).getAttribute("value") + "\n";
+    String userFirstAndLastNames = userFirstName.concat(" ").concat(userLastName);
+    wd.navigate().back();
+    clickDetailsContactById(contact.getId());
+    String domain1 = wd.findElement(By.xpath("//div[@id='content']//a[2]")).getText();
+    String domain2 = wd.findElement(By.xpath("//div[@id='content']//a[4]")).getText();
+    String domain3 = wd.findElement(By.xpath("//div[@id='content']//a[6]")).getText();
+    userEmail = userEmail.concat(" (").concat(domain1).concat(")");
+    userEmail2 = userEmail2.concat(" (").concat(domain2).concat(")");
+    userEmail3 = userEmail3.concat(" (").concat(domain3).concat(")");
+    wd.navigate().back();
+
+    return new ContactData().withId(contact.getId()).withUserFirstAndLastNames(userFirstAndLastNames)
+            .withUserAddress(userAddress).withUserHomePhone(userHomePhone).withUserMobilePhone(userMobilePhone)
+            .withUserWorkPhone(userWorkPhone).withUserEmail(userEmail).withUserEmail2(userEmail2).withUserEmail3(userEmail3);
+  }
+
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    clickDetailsContactById(contact.getId());
+    String allData = wd.findElement(By.id("content")).getText();
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withAllData(allData);
+  }
+
+  private void clickDetailsContactById(int id) {
+    wd.findElement(By.xpath("//input[@id='"+ id +"']/../../td[7]/a/img")).click();
+  }
 }

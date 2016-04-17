@@ -12,8 +12,7 @@ public class AddNewContactTest extends TestBase{
   public void testAddNewContact() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    ContactData contact = new ContactData().withUserFirstName("firstname3").withUserMiddleName("middlename")
-            .withUserLastName("lastname").withUserNick("nickname").withUserCompany("company")
+    ContactData contact = new ContactData().withUserFirstName("firstname3").withUserLastName("lastname")
             .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone")
             .withUserWorkPhone("workphone").withUserEmail("email1@test.com").withUserEmail2("email2@test.com")
             .withUserEmail3("email3@test.com");

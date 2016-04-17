@@ -16,6 +16,26 @@ public class ContactData {
   private String userEmail3;
   private String allPhones;
   private String allEmails;
+  private String allData;
+  private String userFirstAndLastNames;
+
+  public String getUserFirstAndLastNames() {
+    return userFirstAndLastNames;
+  }
+
+  public ContactData withUserFirstAndLastNames(String userFirstAndLastNames) {
+    this.userFirstAndLastNames = userFirstAndLastNames;
+    return this;
+  }
+
+  public String getAllData() {
+    return allData;
+  }
+
+  public ContactData withAllData(String allData) {
+    this.allData = allData;
+    return this;
+  }
 
   public String getUserEmail() {
     return userEmail;

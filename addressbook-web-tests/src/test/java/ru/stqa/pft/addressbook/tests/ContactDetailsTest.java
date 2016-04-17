@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
-public class ContactEmailTests extends TestBase{
+public class ContactDetailsTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -24,17 +23,23 @@ public class ContactEmailTests extends TestBase{
     }
   }
 
+  //This test works if a contact contains only firstname, lastname, address, 3 phones and 3 emails.
   @Test
   public void testContactPhones() {
     ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditFormModified(contact);
+    ContactData contactInfoFromDetailsForm = app.contact().infoFromDetailsForm(contact);
 
-    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    assertThat(contactInfoFromDetailsForm.getAllData(), equalTo(mergeAllData(contactInfoFromEditForm)));
   }
 
-  private String mergeEmails(ContactData contact) {
-    return Arrays.asList(contact.getUserEmail(), contact.getUserEmail2(), contact.getUserEmail3())
-            .stream().filter((s) -> ! s.equals("")).collect(Collectors.joining("\n"));
+  private String mergeAllData(ContactData contact) {
+    return Arrays.asList(contact.getUserFirstAndLastNames(), contact.getUserAddress(), contact.getUserHomePhone()
+            , contact.getUserMobilePhone(), contact.getUserWorkPhone(), contact.getUserEmail()
+            ,contact.getUserEmail2(), contact.getUserEmail3())
+            .stream().filter((s) -> ! s.equals(""))
+            .collect(Collectors.joining("\n"));
   }
 
 }
+
