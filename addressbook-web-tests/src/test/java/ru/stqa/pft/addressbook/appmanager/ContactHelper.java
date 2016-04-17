@@ -111,5 +111,16 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactCache);
   }
 
+  public ContactData infoFromEditForm(ContactData contact) {
+    clickEditContactById(contact.getId());
+    String userFirstName = wd.findElement(By.name("firstname")).getAttribute("value");
+    String userLastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String userHomePhone = wd.findElement(By.name("home")).getAttribute("value");
+    String userMobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
+    String userWorkPhone = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withUserFirstName(userFirstName).withUserLastName(userLastName)
+            .withUserHomePhone(userHomePhone).withUserMobilePhone(userMobilePhone).withUserWorkPhone(userWorkPhone);
+  }
 
 }
