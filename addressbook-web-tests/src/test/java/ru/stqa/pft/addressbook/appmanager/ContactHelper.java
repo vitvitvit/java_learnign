@@ -20,14 +20,14 @@ public class ContactHelper extends HelperBase {
 
   public void fillContactData(ContactData contactData) {
     type(By.name("firstname"), contactData.getUserFirstName());
-    type(By.name("middlename"), contactData.getUserMiddleName());
     type(By.name("lastname"),contactData.getUserLastName());
-    type(By.name("nickname"),contactData.getUserNick());
-    type(By.name("company"),contactData.getUserCompany());
     type(By.name("address"),contactData.getUserAddress());
     type(By.name("home"),contactData.getUserHomePhone());
     type(By.name("mobile"),contactData.getUserMobilePhone());
     type(By.name("work"),contactData.getUserWorkPhone());
+    type(By.name("email"),contactData.getUserEmail());
+    type(By.name("email2"),contactData.getUserEmail2());
+    type(By.name("email3"),contactData.getUserEmail3());
   }
 
   public void openAddNewPage() {
