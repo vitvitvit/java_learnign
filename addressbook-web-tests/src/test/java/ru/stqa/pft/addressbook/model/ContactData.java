@@ -11,6 +11,16 @@ public class ContactData {
   private String userHomePhone;
   private String userMobilePhone;
   private String userWorkPhone;
+  private String allPhones;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public String getUserFirstName() {
     return userFirstName;
