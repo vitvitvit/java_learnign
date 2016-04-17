@@ -12,9 +12,10 @@ public class AddNewContactTest extends TestBase{
   public void testAddNewContact() {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    ContactData contact = new ContactData().withUserFirstName("firstname6").withUserMiddleName("middlename")
+    ContactData contact = new ContactData().withUserFirstName("firstname3").withUserMiddleName("middlename")
             .withUserLastName("lastname").withUserNick("nickname").withUserCompany("company")
-            .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone");
+            .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone")
+            .withUserWorkPhone("workphone");
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();

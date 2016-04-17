@@ -15,7 +15,8 @@ public class ContactModificationTest extends TestBase{
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withUserFirstName("firstname6").withUserMiddleName("middlename")
               .withUserLastName("lastname").withUserNick("nickname").withUserCompany("company")
-              .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone"));
+              .withUserAddress("address").withUserHomePhone("homephone").withUserMobilePhone("mobilephone")
+              .withUserWorkPhone("workphone"));
     }
   }
 
