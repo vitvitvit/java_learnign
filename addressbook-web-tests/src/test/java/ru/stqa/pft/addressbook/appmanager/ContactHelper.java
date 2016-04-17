@@ -5,10 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class ContactHelper extends HelperBase {
 
@@ -106,9 +104,11 @@ public class ContactHelper extends HelperBase {
        String lastName = element.findElement(By.xpath("td[2]")).getText();
        String firstName = element.findElement(By.xpath("td[3]")).getText();
        String allPhones = element.findElement(By.xpath("td[6]")).getText();
+       String allEmails = element.findElement(By.xpath("td[5]")).getText();
+       String address = element.findElement(By.xpath("td[4]")).getText();
        int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
        contactCache.add(new ContactData().withId(id).withUserFirstName(firstName).withUserLastName(lastName)
-               .withAllPhones(allPhones));
+               .withAllPhones(allPhones).withAllEmails(allEmails).withUserAddress(address));
     }
     return new Contacts(contactCache);
   }
@@ -120,9 +120,14 @@ public class ContactHelper extends HelperBase {
     String userHomePhone = wd.findElement(By.name("home")).getAttribute("value");
     String userMobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String userWorkPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String userEmail = wd.findElement(By.name("email")).getAttribute("value");
+    String userEmail2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String userEmail3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String userAddress = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withUserFirstName(userFirstName).withUserLastName(userLastName)
-            .withUserHomePhone(userHomePhone).withUserMobilePhone(userMobilePhone).withUserWorkPhone(userWorkPhone);
+            .withUserHomePhone(userHomePhone).withUserMobilePhone(userMobilePhone).withUserWorkPhone(userWorkPhone)
+            .withUserEmail(userEmail).withUserEmail2(userEmail2).withUserEmail3(userEmail3).withUserAddress(userAddress);
   }
 
 }
