@@ -28,6 +28,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"),contactData.getUserEmail());
     type(By.name("email2"),contactData.getUserEmail2());
     type(By.name("email3"),contactData.getUserEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
   }
 
   public void openAddNewPage() {
