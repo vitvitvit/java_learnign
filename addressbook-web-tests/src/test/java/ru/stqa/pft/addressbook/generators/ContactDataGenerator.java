@@ -5,7 +5,6 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 import java.io.File;
 import java.io.FileWriter;
@@ -66,7 +65,5 @@ public class ContactDataGenerator {
     }
     return contacts;
   }
-
-
 
 }
