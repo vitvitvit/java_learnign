@@ -40,12 +40,12 @@ public class AddNewContactTest extends TestBase{
   @Test(dataProvider = "validContactsFromJson")
   public void testAddNewContact(ContactData contact) {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     File photo = new File("src/test/resources/123.png");
     contact = contact.withPhoto(photo);
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
