@@ -31,7 +31,7 @@ public class SoapHelper {
 
   private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator()
-            .getMantisConnectPort(new URL("http://localhost/mantisbt-1.2.19/api/soap/mantisconnect.php?wsdl"));
+            .getMantisConnectPort(new URL("http://localhost/mantisbt-1.2.19/api/soap/mantisconnect.php"));
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
